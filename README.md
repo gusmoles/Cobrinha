@@ -77,3 +77,7 @@ Quando o jogo termina, o jogador pode reiniciar a partida ou sair. Isso é feito
 Observações Finais
 Desempenho : A velocidade do jogo é controlada pela função relogio.tick(10), que define a quantidade de quadros por segundo (FPS). O valor 10 pode ser ajustado para tornar o jogo mais rápido ou mais lento.
 Imagem da Comida : A maçã é fornecida a partir de um link de imagem da web, o que pode afetar o desempenho dependendo da conexão com a internet. A imagem é redimensionada para ser ajustada ao tamanho da comida.
+
+
+
+Para que o codigo funcione corretamente é necessario ter o python instalado e o pygame. Para instalar o pygames vá no terminal e digite "pip install pygame" dessa forma o pygame será instalado. Agora para rodar o codigo é muito simples, execute o arquivo main e seu jogo da cobrinha estará funcionando
