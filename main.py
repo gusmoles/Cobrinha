@@ -1,25 +1,42 @@
 import pygame
+import random
+import json
+from entidade import Entidade
 from cobra import Cobra
 from comida import Comida
-import random
+from io import BytesIO
+import requests
 
-def mostrar_tela_fim_de_jogo(tela, pontos):
-    # Função que exibe a tela de fim de jogo com a pontuação e os botões
+# Função para carregar e salvar o recorde
+def carregar_recorde():
+    try:
+        with open('recorde.json', 'r') as arquivo:
+            dados = json.load(arquivo)
+            return dados.get("recorde", 0)
+    except FileNotFoundError:
+        return 0
+
+def salvar_recorde(recorde):
+    with open('recorde.json', 'w') as arquivo:
+        json.dump({"recorde": recorde}, arquivo)
+
+def mostrar_tela_fim_de_jogo(tela, pontos, recorde):
     tela.fill((0, 0, 0))
 
-    # Exibir a pontuação
     font = pygame.font.SysFont(None, 48)
     texto_pontos = font.render(f"Pontuação: {pontos}", True, (255, 255, 255))
     tela.blit(texto_pontos, (250, 150))
 
-    # Exibir o botão "Novo Jogo"
+    # Exibir o recorde
+    texto_recorde = font.render(f"Recorde: {recorde}", True, (255, 255, 0))
+    tela.blit(texto_recorde, (250, 200))
+
     font_botao = pygame.font.SysFont(None, 36)
     texto_novo_jogo = font_botao.render("Novo Jogo", True, (0, 255, 0))
     retangulo_novo_jogo = pygame.Rect(225, 250, 150, 50)
     pygame.draw.rect(tela, (255, 255, 255), retangulo_novo_jogo)
     tela.blit(texto_novo_jogo, (235, 260))
 
-    # Exibir o botão "Sair"
     texto_sair = font_botao.render("Sair", True, (255, 0, 0))
     retangulo_sair = pygame.Rect(225, 320, 150, 50)
     pygame.draw.rect(tela, (255, 255, 255), retangulo_sair)
@@ -27,7 +44,6 @@ def mostrar_tela_fim_de_jogo(tela, pontos):
 
     pygame.display.update()
 
-    # Esperar o clique para novo jogo ou sair
     rodando = True
     while rodando:
         for evento in pygame.event.get():
@@ -44,20 +60,19 @@ def mostrar_tela_fim_de_jogo(tela, pontos):
 def main():
     pygame.init()
 
-    # Configurações do jogo
     largura, altura = 600, 400
     tamanho = 20
     tela = pygame.display.set_mode((largura, altura))
     pygame.display.set_caption("Jogo da Cobrinha - POO")
     relogio = pygame.time.Clock()
 
-    # Instâncias das classes
+    recorde = carregar_recorde()  # Carregar o recorde
+
     cobra = Cobra(largura // 2, altura // 2, tamanho)
     comida = Comida(random.randint(0, (largura - tamanho) // tamanho) * tamanho,
                     random.randint(0, (altura - tamanho) // tamanho) * tamanho,
                     tamanho)
 
-    # Loop do jogo
     rodando = True
     while rodando:
         for evento in pygame.event.get():
@@ -81,7 +96,12 @@ def main():
             comida.reposicionar(largura, altura)
 
         if cobra.colidiu(largura, altura):
-            if mostrar_tela_fim_de_jogo(tela, cobra.pontos):
+            # Verifica se o jogador atingiu um novo recorde
+            if cobra.pontos > recorde:
+                recorde = cobra.pontos
+                salvar_recorde(recorde)  # Atualiza o arquivo com o novo recorde
+
+            if mostrar_tela_fim_de_jogo(tela, cobra.pontos, recorde):
                 # Novo jogo
                 cobra = Cobra(largura // 2, altura // 2, tamanho)
                 comida = Comida(random.randint(0, (largura - tamanho) // tamanho) * tamanho,
