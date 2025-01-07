@@ -1,5 +1,4 @@
 import pygame
-import random
 from entidade import Entidade
 
 class Cobra(Entidade):
