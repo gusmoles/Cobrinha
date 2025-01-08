@@ -79,24 +79,25 @@ Desempenho : A velocidade do jogo é controlada pela função relogio.tick(10), 
 Imagem da Comida : A maçã é fornecida a partir de um link de imagem da web, o que pode afetar o desempenho dependendo da conexão com a internet. A imagem é redimensionada para ser ajustada ao tamanho da comida.
 
 
-
 ---
 
-##  Como Executar
 
-### Pré-requisitos
-Certifique-se de ter o **Python** instalado em sua máquina. Você pode instalá-lo [aqui](https://www.python.org/downloads/).  
+## Instruções para Execução
 
-### Passos
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/gusmoles/Cobrinha.git
-2. Navegue até o diretório do projeto:
-   ```bash
-   cd Cobrinha
-3. Instale as dependências necessárias:
+1. Certifique-se de que o Python 3 está instalado em sua máquina.
+2. Instale o Pygame utilizando o comando:
+
    ```bash
    pip install pygame
-4. Execute o jogo:
+3. Clone este repositório:
+   
+   ```bash
+     git clone https://github.com/gusmoles/Cobrinha.git
+
+4. Navegue até a pasta do projeto e execute o jogo:
    ```bash
    python main.py
+
+
+
+
