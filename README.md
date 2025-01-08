@@ -80,4 +80,23 @@ Imagem da Comida : A maçã é fornecida a partir de um link de imagem da web, o
 
 
 
-Para que o codigo funcione corretamente é necessario ter o python instalado e o pygame. Para instalar o pygames vá no terminal e digite "pip install pygame" dessa forma o pygame será instalado. Agora para rodar o codigo é muito simples, execute o arquivo main e seu jogo da cobrinha estará funcionando
+---
+
+##  Como Executar
+
+### Pré-requisitos
+Certifique-se de ter o **Python** instalado em sua máquina. Você pode instalá-lo [aqui](https://www.python.org/downloads/).  
+
+### Passos
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/jogo-da-velha.git
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd jogo-da-velha
+3. Instale as dependências necessárias:
+   ```bash
+   pip install pygame
+4. Execute o jogo:
+   ```bash
+   python main.py
