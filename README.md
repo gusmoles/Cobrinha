@@ -79,6 +79,16 @@ Desempenho : A velocidade do jogo é controlada pela função relogio.tick(10), 
 Imagem da Comida : A maçã é fornecida a partir de um link de imagem da web, o que pode afetar o desempenho dependendo da conexão com a internet. A imagem é redimensionada para ser ajustada ao tamanho da comida.
 
 
+
+
+## Tecnologias Utilizadas
+
+- **Python 3**
+- **Pygame**: Para a criação da interface gráfica e animações do jogo.
+- **JSON**: Para salvar e carregar o placar (pontuação máxima).
+- **Serialização de Objetos**
+
+
 ---
 
 
