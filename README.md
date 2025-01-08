@@ -90,10 +90,10 @@ Certifique-se de ter o **Python** instalado em sua máquina. Você pode instalá
 ### Passos
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/jogo-da-velha.git
+   git clone https://github.com/gusmoles/Cobrinha.git
 2. Navegue até o diretório do projeto:
    ```bash
-   cd jogo-da-velha
+   cd Cobrinha
 3. Instale as dependências necessárias:
    ```bash
    pip install pygame
